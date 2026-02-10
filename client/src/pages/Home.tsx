@@ -93,6 +93,36 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Patient Reviews */}
+      <section id="reviews" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold font-display text-slate-900 mb-4">Patient Reviews</h2>
+          <p className="text-slate-500 mb-12">Trusted by hundreds of satisfied patients</p>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <ReviewCard 
+              name="Kevin Walker" 
+              initial="K" 
+              text="The most professional dental clinic I've ever visited. Dr. Ahmed explained everything clearly and the procedure was painless."
+            />
+            <ReviewCard 
+              name="Sarah Bennett" 
+              initial="S" 
+              text="I was terrified of dentists until I came here. The staff is so welcoming and the environment is very relaxing."
+            />
+            <ReviewCard 
+              name="Michael Chang" 
+              initial="M" 
+              text="Excellent service and state of the art equipment. Highly recommended for anyone looking for quality dental work."
+            />
+          </div>
+          
+          <Button variant="outline" className="rounded-none border-slate-900 px-8 uppercase text-xs font-bold tracking-widest">
+            See All Reviews
+          </Button>
+        </div>
+      </section>
+
       {/* Specialties Grid */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

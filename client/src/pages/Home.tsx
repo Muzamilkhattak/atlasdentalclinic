@@ -59,18 +59,18 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-800 text-sm font-semibold mb-6">
               Welcome to Atlas Dental
             </span>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6 font-display">
-              Comprehensive Dental Care in <span className="text-slate-400">Bahria Town.</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6 font-display">
+              Comprehensive Dental Care in Bahria Town.
             </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+            <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed font-sans font-medium">
               Experience multidisciplinary dental excellence with our team of specialists dedicated to your perfect smile.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="h-14 px-8 rounded-full text-lg bg-black hover:bg-black/80 text-white transition-all">
+              <Button className="h-11 px-8 rounded-full text-base font-bold bg-black hover:bg-black/90 text-white transition-all font-sans uppercase tracking-wide">
                 Book Appointment
               </Button>
-              <Button variant="outline" className="h-14 px-8 rounded-full text-lg border-2 border-slate-200 hover:bg-slate-50 transition-all">
-                <Phone className="mr-2 w-5 h-5" /> Make a Call
+              <Button variant="outline" className="h-11 px-8 rounded-full text-base font-bold border border-slate-200 hover:bg-slate-50 transition-all font-sans uppercase tracking-wide">
+                <Phone className="mr-2 w-4 h-4" /> Make a Call
               </Button>
             </div>
           </motion.div>

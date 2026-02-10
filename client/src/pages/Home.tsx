@@ -49,47 +49,49 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[90vh] flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
+            alt="Modern Dental Clinic"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-800 text-sm font-semibold mb-6">
-              Welcome to Atlas Dental
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6 font-display">
-              Comprehensive Dental Care in Bahria Town.
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-8 font-display">
+              Comprehensive Dental Care in Bahria Town
             </h1>
-            <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed font-sans font-medium">
-              Experience multidisciplinary dental excellence with our team of specialists dedicated to your perfect smile.
+            <p className="text-xl text-slate-700 mb-10 leading-relaxed font-sans font-medium">
+              Multidisciplinary dental excellence in Phase 7, Rawalpindi. Your smile deserves the best care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="h-11 px-8 rounded-full text-base font-bold bg-black hover:bg-black/90 text-white transition-all font-sans uppercase tracking-wide">
-                Book Appointment
+              <Button className="h-12 px-10 rounded-none text-base font-bold bg-black hover:bg-black/90 text-white transition-all font-sans uppercase tracking-wider">
+                Book an Appointment
               </Button>
-              <Button variant="outline" className="h-11 px-8 rounded-full text-base font-bold border border-slate-200 hover:bg-slate-50 transition-all font-sans uppercase tracking-wide">
-                <Phone className="mr-2 w-4 h-4" /> Make a Call
+              <Button variant="outline" className="h-12 px-10 rounded-none text-base font-bold border border-slate-900 bg-white/50 hover:bg-white text-slate-900 transition-all font-sans uppercase tracking-wider flex items-center gap-2">
+                <Phone className="w-4 h-4" /> Call Now
               </Button>
             </div>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl"
-          >
-            {/* dental clinic interior bright clean */}
-            <img 
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
-              alt="Modern Dental Clinic"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-          </motion.div>
         </div>
       </section>
+
+      {/* Info Bar */}
+      <div className="bg-black text-white py-3 text-center text-sm font-medium tracking-wide">
+        <div className="flex items-center justify-center gap-2">
+          <MapPin className="w-4 h-4" />
+          Bahria Town Phase 7, Rawalpindi
+        </div>
+      </div>
 
       {/* Specialties Grid */}
       <section className="py-20 bg-slate-50">

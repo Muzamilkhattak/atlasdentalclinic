@@ -6,6 +6,17 @@ import oralSurgeryImage from "@/assets/Oral Surgery.png";
 import cosmeticDentistryImage from "@/assets/Cosmetic Dentistry.png";
 import pediatricDentistryImage from "@/assets/Pediatric Dentistry.png";
 import dentalImplantsImage from "@/assets/Dental Implants.png";
+import periapicalXraysImage from "@/assets/Periapical Xrays.jpeg";
+import toothColouredFillingsImage from "@/assets/Tooth Coloured Fillings.png";
+import compositeBondingImage from "@/assets/Composite Bonding.png";
+import toothExtractionsImage from "@/assets/tooth extraction.png";
+import wisdomToothSurgeryImage from "@/assets/Wisdom Tooth Surgery.jfif";
+import rootCanalTreatmentImage from "@/assets/Root Canal Treatment.jfif";
+import crownBridgeImage from "@/assets/Crown & Bridge.jfif";
+import veneersImage from "@/assets/Veneers.jfif";
+import clearAlignersImage from "@/assets/Clear Aligners.jfif";
+import removableDenturesImage from "@/assets/Removable Dentures.jpg";
+import gumsTreatmentImage from "@/assets/Gums Treatment.jfif";
 
 export type ServiceDetail = {
   slug: string;
@@ -516,6 +527,580 @@ export const serviceDetails: ServiceDetail[] = [
       {
         question: "Do I always need a crown after root canal?",
         answer: "Posterior teeth often need crowns for strength. The final decision depends on remaining tooth structure.",
+      },
+    ],
+  },
+  {
+    slug: "periapical-xrays",
+    title: "Periapical Xrays",
+    shortDescription: "Focused intraoral X-ray imaging for root, bone, and infection assessment.",
+    heroImage: periapicalXraysImage,
+    intro:
+      "Periapical X-rays provide high-detail views of individual teeth and surrounding bone. They support accurate diagnosis for pain, trauma, infection, and treatment planning.",
+    duration: "15-20 minutes",
+    visitPlan: "As needed",
+    comfortLevel: "Quick and comfortable",
+    recovery: "No downtime",
+    treatments: [
+      "Single-tooth and multi-tooth diagnostic imaging",
+      "Root and periapical lesion evaluation",
+      "Pre- and post-treatment radiographic documentation",
+    ],
+    idealFor: [
+      "Persistent tooth pain or sensitivity",
+      "Suspected root infection or abscess",
+      "Assessment before restorative or endodontic care",
+    ],
+    process: [
+      { step: "Positioning", detail: "A sensor is placed gently to capture targeted views." },
+      { step: "Imaging", detail: "Low-dose digital exposures are taken in seconds." },
+      { step: "Review", detail: "Findings are explained and linked to treatment options." },
+    ],
+    faqs: [
+      {
+        question: "Is a periapical X-ray safe?",
+        answer: "Yes. Digital imaging uses very low radiation and follows strict safety protocols.",
+      },
+      {
+        question: "Do I need preparation before the X-ray?",
+        answer: "No special preparation is required. It is done chairside during your visit.",
+      },
+      {
+        question: "Will I get the result immediately?",
+        answer: "Yes, images are reviewed right away with your dentist.",
+      },
+    ],
+  },
+  {
+    slug: "tooth-coloured-fillings",
+    title: "Tooth Coloured Fillings",
+    shortDescription: "Aesthetic restorations that repair cavities while blending with natural teeth.",
+    heroImage: toothColouredFillingsImage,
+    intro:
+      "Tooth-coloured fillings restore decayed or worn teeth using adhesive materials matched to your tooth shade. The approach is conservative and function-focused.",
+    duration: "30-60 minutes",
+    visitPlan: "Single visit in most cases",
+    comfortLevel: "Comfort-managed",
+    recovery: "Usually immediate",
+    treatments: [
+      "Decay removal with conservative preparation",
+      "Composite resin shade matching and layering",
+      "Bite adjustment and polishing for smooth finish",
+    ],
+    idealFor: [
+      "Small to moderate cavities",
+      "Replacement of old metallic fillings",
+      "Cosmetic improvement of visible restorations",
+    ],
+    process: [
+      { step: "Assessment", detail: "Tooth structure and decay depth are evaluated." },
+      { step: "Restoration", detail: "Composite material is placed and cured in layers." },
+      { step: "Finishing", detail: "Contacts, contour, and bite are refined and polished." },
+    ],
+    faqs: [
+      {
+        question: "How long do composite fillings last?",
+        answer: "With good hygiene and routine care, they can remain functional for many years.",
+      },
+      {
+        question: "Will the filling match my tooth color?",
+        answer: "Yes. Shade selection is done to blend closely with natural enamel.",
+      },
+      {
+        question: "Can I eat after treatment?",
+        answer: "Usually yes, shortly after treatment once numbness wears off.",
+      },
+    ],
+  },
+  {
+    slug: "composite-bonding",
+    title: "Composite Bonding",
+    shortDescription: "Minimally invasive smile enhancement for chips, gaps, and minor shape concerns.",
+    heroImage: compositeBondingImage,
+    intro:
+      "Composite bonding reshapes teeth using aesthetic resin materials. It is a conservative cosmetic option that improves smile balance with minimal enamel removal.",
+    duration: "30-75 minutes",
+    visitPlan: "1-2 visits",
+    comfortLevel: "Very comfortable",
+    recovery: "No downtime",
+    treatments: [
+      "Chip and edge repair",
+      "Minor gap closure and contour correction",
+      "Surface refinement and polish for natural luster",
+    ],
+    idealFor: [
+      "Chipped front teeth",
+      "Small spacing concerns",
+      "Patients seeking quick smile improvements",
+    ],
+    process: [
+      { step: "Smile Review", detail: "Tooth proportions and goals are discussed." },
+      { step: "Bonding", detail: "Resin is sculpted and light-cured for shape correction." },
+      { step: "Polish", detail: "Final texture and gloss are adjusted for natural appearance." },
+    ],
+    faqs: [
+      {
+        question: "Is composite bonding reversible?",
+        answer: "In many conservative cases, very little to no enamel removal is needed.",
+      },
+      {
+        question: "Can bonded teeth stain?",
+        answer: "They can stain over time; regular cleaning and polishing helps maintain results.",
+      },
+      {
+        question: "How durable is bonding?",
+        answer: "Durability is good for minor corrections and depends on bite forces and habits.",
+      },
+    ],
+  },
+  {
+    slug: "tooth-extractions",
+    title: "Tooth Extractions",
+    shortDescription: "Safe removal of teeth that are severely damaged, infected, or non-restorable.",
+    heroImage: toothExtractionsImage,
+    intro:
+      "When a tooth cannot be preserved predictably, extraction may be the best treatment. The procedure is performed with anesthesia and careful post-operative planning.",
+    duration: "30-60 minutes",
+    visitPlan: "Single visit",
+    comfortLevel: "Anesthesia-supported",
+    recovery: "2-5 days",
+    treatments: [
+      "Simple extractions",
+      "Infection-related tooth removal",
+      "Post-extraction site care and healing guidance",
+    ],
+    idealFor: [
+      "Non-restorable fractured teeth",
+      "Advanced decay with poor prognosis",
+      "Persistent infection around a tooth",
+    ],
+    process: [
+      { step: "Evaluation", detail: "Clinical exam and imaging confirm extraction need." },
+      { step: "Procedure", detail: "Tooth is removed with minimally traumatic technique." },
+      { step: "Aftercare", detail: "Detailed instructions are provided to support healing." },
+    ],
+    faqs: [
+      {
+        question: "Will extraction be painful?",
+        answer: "Local anesthesia keeps treatment comfortable. Mild soreness after is expected.",
+      },
+      {
+        question: "How long does healing take?",
+        answer: "Initial healing is usually within a few days, with gradual full recovery.",
+      },
+      {
+        question: "Do I need to replace the extracted tooth?",
+        answer: "Often yes, especially for function and bite stability; options are discussed after healing.",
+      },
+    ],
+  },
+  {
+    slug: "wisdom-tooth-surgery",
+    title: "Wisdom Tooth Surgery",
+    shortDescription: "Surgical removal of impacted or problematic third molars with controlled recovery.",
+    heroImage: wisdomToothSurgeryImage,
+    intro:
+      "Wisdom tooth surgery is indicated when third molars are impacted, painful, infected, or threatening nearby teeth. Surgical planning focuses on safety and healing.",
+    duration: "45-90 minutes",
+    visitPlan: "Single procedure with review",
+    comfortLevel: "Anesthesia-supported",
+    recovery: "3-7 days typical",
+    treatments: [
+      "Impacted wisdom tooth removal",
+      "Surgical flap and sectioning techniques as needed",
+      "Post-op medications and follow-up checks",
+    ],
+    idealFor: [
+      "Painful or recurrently infected wisdom teeth",
+      "Impacted third molars affecting adjacent teeth",
+      "Crowding risk and hygiene limitations around wisdom teeth",
+    ],
+    process: [
+      { step: "Planning", detail: "Imaging and risk assessment are completed before surgery." },
+      { step: "Surgery", detail: "Targeted surgical removal under local anesthesia." },
+      { step: "Recovery", detail: "Healing is monitored with clear aftercare instructions." },
+    ],
+    faqs: [
+      {
+        question: "Is swelling normal after wisdom surgery?",
+        answer: "Yes, mild to moderate swelling can occur for a few days and usually settles.",
+      },
+      {
+        question: "When can I return to normal routine?",
+        answer: "Most patients return in 1-3 days depending on case complexity.",
+      },
+      {
+        question: "What should I eat after surgery?",
+        answer: "Soft, cool foods are recommended initially; avoid hard and spicy foods early on.",
+      },
+    ],
+  },
+  {
+    slug: "root-canal-treatment",
+    title: "Root Canal Treatment",
+    shortDescription: "Targeted endodontic care to remove infection and save natural teeth.",
+    heroImage: rootCanalTreatmentImage,
+    intro:
+      "Root canal treatment removes infected pulp tissue, disinfects canal spaces, and seals the tooth to prevent reinfection. The goal is long-term tooth preservation.",
+    duration: "60-90 minutes",
+    visitPlan: "1-2 visits typical",
+    comfortLevel: "Anesthesia-supported",
+    recovery: "Mild tenderness 1-2 days",
+    treatments: [
+      "Canal disinfection and shaping",
+      "Biocompatible root canal sealing",
+      "Post-endodontic restoration planning",
+    ],
+    idealFor: [
+      "Deep decay with pulpal involvement",
+      "Severe lingering tooth pain",
+      "Teeth with periapical infection",
+    ],
+    process: [
+      { step: "Diagnosis", detail: "Clinical tests and imaging confirm pulp status." },
+      { step: "Canal Therapy", detail: "Infected tissue is removed and canals are cleaned." },
+      { step: "Seal and Restore", detail: "Canals are sealed and final restoration is planned." },
+    ],
+    faqs: [
+      {
+        question: "Can root canal save my natural tooth?",
+        answer: "Yes, in many cases it allows long-term retention of the tooth.",
+      },
+      {
+        question: "Do all treated teeth need crowns?",
+        answer: "Many posterior teeth do; the recommendation depends on remaining structure.",
+      },
+      {
+        question: "How soon can pain improve?",
+        answer: "Pain usually improves significantly soon after treatment.",
+      },
+    ],
+  },
+  {
+    slug: "crown-bridge",
+    title: "Crown & Bridge",
+    shortDescription: "Fixed prosthetic restorations to restore damaged or missing teeth.",
+    heroImage: crownBridgeImage,
+    intro:
+      "Crowns protect compromised teeth while bridges replace missing teeth using adjacent support. Both are designed for function, durability, and natural aesthetics.",
+    duration: "45-75 minutes per visit",
+    visitPlan: "2-3 visits typical",
+    comfortLevel: "Comfort-managed",
+    recovery: "Minimal",
+    treatments: [
+      "Single-tooth full coverage crowns",
+      "Fixed bridge design and cementation",
+      "Bite calibration and occlusal adjustment",
+    ],
+    idealFor: [
+      "Fractured or heavily restored teeth",
+      "Missing single teeth requiring fixed replacement",
+      "Teeth after root canal requiring coverage",
+    ],
+    process: [
+      { step: "Preparation", detail: "Tooth structure is prepared and impressions are taken." },
+      { step: "Trial", detail: "Fit, shade, and bite are checked before finalization." },
+      { step: "Delivery", detail: "Final crown/bridge is cemented with post-care guidance." },
+    ],
+    faqs: [
+      {
+        question: "How long do crowns and bridges last?",
+        answer: "With proper care, many restorations function successfully for years.",
+      },
+      {
+        question: "Will the crown look natural?",
+        answer: "Yes. Shade and contour are selected to match surrounding teeth.",
+      },
+      {
+        question: "Can I chew normally with a bridge?",
+        answer: "Yes, once adjusted, bridges typically restore stable chewing.",
+      },
+    ],
+  },
+  {
+    slug: "veneers",
+    title: "Veneers",
+    shortDescription: "Aesthetic laminates that enhance color, shape, and smile symmetry.",
+    heroImage: veneersImage,
+    intro:
+      "Veneers are thin restorations bonded to the front surfaces of teeth for cosmetic improvement. Planning focuses on natural proportions and conservative preparation.",
+    duration: "45-75 minutes per visit",
+    visitPlan: "2-3 visits",
+    comfortLevel: "Minimally invasive",
+    recovery: "Immediate in most cases",
+    treatments: [
+      "Smile design and proportional analysis",
+      "Porcelain/composite veneer preparation",
+      "Bonding, finishing, and final polish",
+    ],
+    idealFor: [
+      "Discoloration unresponsive to whitening",
+      "Minor shape irregularities and worn edges",
+      "Patients seeking aesthetic smile enhancement",
+    ],
+    process: [
+      { step: "Design", detail: "Smile goals and tooth proportions are reviewed." },
+      { step: "Preparation", detail: "Minimal surface preparation is performed when needed." },
+      { step: "Bonding", detail: "Veneers are bonded and adjusted for fit and esthetics." },
+    ],
+    faqs: [
+      {
+        question: "Are veneers permanent?",
+        answer: "They are a long-term option and may require replacement after years of use.",
+      },
+      {
+        question: "Do veneers stain?",
+        answer: "Porcelain veneers resist staining better than natural enamel and composites.",
+      },
+      {
+        question: "Will my teeth look natural?",
+        answer: "Yes, treatment planning prioritizes natural contours and shade harmony.",
+      },
+    ],
+  },
+  {
+    slug: "scaling-polishing",
+    title: "Scaling & Polishing",
+    shortDescription: "Professional cleaning to remove tartar, stains, and bacterial buildup.",
+    heroImage: generalDentistryImage,
+    intro:
+      "Scaling and polishing helps maintain healthy gums and cleaner tooth surfaces. It is a preventive service recommended regularly to reduce disease risk.",
+    duration: "30-45 minutes",
+    visitPlan: "Every 6 months (or as advised)",
+    comfortLevel: "Very comfortable",
+    recovery: "No downtime",
+    treatments: [
+      "Supra- and subgingival deposit removal",
+      "Tooth surface polishing",
+      "Oral hygiene reinforcement",
+    ],
+    idealFor: [
+      "Plaque and tartar buildup",
+      "Mild gum inflammation and bleeding",
+      "Routine preventive maintenance",
+    ],
+    process: [
+      { step: "Evaluation", detail: "Gum condition and deposit levels are assessed." },
+      { step: "Scaling", detail: "Plaque and calculus are removed with ultrasonic/hand instruments." },
+      { step: "Polishing", detail: "Teeth are polished and home-care advice is provided." },
+    ],
+    faqs: [
+      {
+        question: "Is scaling painful?",
+        answer: "Most patients find it comfortable; sensitive areas are managed gently.",
+      },
+      {
+        question: "How often should I get scaling done?",
+        answer: "Usually every six months, or more often for gum-risk patients.",
+      },
+      {
+        question: "Can scaling whiten teeth?",
+        answer: "It removes stains and makes teeth cleaner, but it is not bleaching.",
+      },
+    ],
+  },
+  {
+    slug: "teeth-whitening",
+    title: "Teeth Whitening",
+    shortDescription: "Professional whitening for safe and visible improvement in tooth shade.",
+    heroImage: cosmeticDentistryImage,
+    intro:
+      "Teeth whitening brightens discolored teeth using clinically supervised whitening systems. Shade improvement depends on baseline color and lifestyle habits.",
+    duration: "45-60 minutes",
+    visitPlan: "Single session with maintenance advice",
+    comfortLevel: "Mild temporary sensitivity possible",
+    recovery: "Immediate",
+    treatments: [
+      "In-clinic whitening application",
+      "Shade assessment and documentation",
+      "Post-whitening sensitivity management guidance",
+    ],
+    idealFor: [
+      "Extrinsic stain buildup",
+      "General tooth darkening over time",
+      "Patients preparing for events or smile enhancement",
+    ],
+    process: [
+      { step: "Assessment", detail: "Current shade and suitability are evaluated." },
+      { step: "Whitening", detail: "Professional whitening gel is applied under supervision." },
+      { step: "Review", detail: "Final shade is recorded with maintenance recommendations." },
+    ],
+    faqs: [
+      {
+        question: "How long do whitening results last?",
+        answer: "Results vary by diet and habits; maintenance can prolong outcomes.",
+      },
+      {
+        question: "Is whitening safe for enamel?",
+        answer: "When professionally supervised, whitening is considered safe and controlled.",
+      },
+      {
+        question: "Will I feel sensitivity?",
+        answer: "Some patients may feel temporary sensitivity that usually settles quickly.",
+      },
+    ],
+  },
+  {
+    slug: "braces",
+    title: "Braces",
+    shortDescription: "Fixed orthodontic treatment for alignment correction and bite improvement.",
+    heroImage: orthodonticsImage,
+    intro:
+      "Braces apply controlled forces to move teeth into optimal alignment. Treatment improves both esthetics and function, including bite balance and hygiene access.",
+    duration: "45-75 minutes (initial), shorter review visits",
+    visitPlan: "Every 4-6 weeks",
+    comfortLevel: "Mild pressure after adjustments",
+    recovery: "No downtime",
+    treatments: [
+      "Comprehensive orthodontic diagnosis",
+      "Fixed appliance placement and adjustment",
+      "Retention planning after active treatment",
+    ],
+    idealFor: [
+      "Crowded or rotated teeth",
+      "Spacing and bite discrepancies",
+      "Long-term orthodontic correction goals",
+    ],
+    process: [
+      { step: "Records", detail: "Digital records and bite analysis are completed." },
+      { step: "Active Treatment", detail: "Braces are adjusted periodically for planned movement." },
+      { step: "Retention", detail: "Retainers are provided to maintain final alignment." },
+    ],
+    faqs: [
+      {
+        question: "How long does braces treatment take?",
+        answer: "Commonly 12-24 months depending on complexity.",
+      },
+      {
+        question: "Do braces hurt?",
+        answer: "Mild pressure is common after adjustments and usually temporary.",
+      },
+      {
+        question: "Can adults get braces?",
+        answer: "Yes, braces are effective for both teens and adults.",
+      },
+    ],
+  },
+  {
+    slug: "clear-aligners",
+    title: "Clear Aligners",
+    shortDescription: "Transparent removable aligners for discreet orthodontic tooth movement.",
+    heroImage: clearAlignersImage,
+    intro:
+      "Clear aligners straighten teeth using a sequence of custom trays. They are designed for aesthetics, convenience, and predictable movement when worn consistently.",
+    duration: "30-60 minutes (initial)",
+    visitPlan: "Every 6-8 weeks",
+    comfortLevel: "Mild pressure during tray changes",
+    recovery: "No downtime",
+    treatments: [
+      "Digital aligner treatment planning",
+      "Staged aligner delivery and monitoring",
+      "Refinement and retainer phase",
+    ],
+    idealFor: [
+      "Patients seeking discreet orthodontic treatment",
+      "Mild to moderate crowding and spacing",
+      "Compliance-friendly lifestyle candidates",
+    ],
+    process: [
+      { step: "Digital Plan", detail: "Tooth movement sequence is designed virtually." },
+      { step: "Active Wear", detail: "Aligners are worn daily with scheduled tray changes." },
+      { step: "Refinement", detail: "Adjustments and final retainers complete treatment." },
+    ],
+    faqs: [
+      {
+        question: "How many hours should aligners be worn daily?",
+        answer: "Typically 20-22 hours per day for effective movement.",
+      },
+      {
+        question: "Can I remove aligners for meals?",
+        answer: "Yes, aligners are removed for eating and oral hygiene.",
+      },
+      {
+        question: "Are aligners as effective as braces?",
+        answer: "For selected cases, yes. Suitability is determined during evaluation.",
+      },
+    ],
+  },
+  {
+    slug: "removable-dentures",
+    title: "Removable Dentures",
+    shortDescription: "Custom removable prostheses to restore missing teeth and chewing comfort.",
+    heroImage: removableDenturesImage,
+    intro:
+      "Removable dentures replace missing teeth and support oral function, speech, and facial profile. Design and fit are customized for comfort and stability.",
+    duration: "45-75 minutes per visit",
+    visitPlan: "Multiple visits for fabrication and adjustment",
+    comfortLevel: "Comfort-focused fitting",
+    recovery: "Adaptation period expected",
+    treatments: [
+      "Complete and partial denture planning",
+      "Impression, try-in, and fit verification",
+      "Post-delivery adjustment appointments",
+    ],
+    idealFor: [
+      "Single-arch or full-arch tooth loss",
+      "Patients needing removable prosthetic rehabilitation",
+      "Budget-conscious replacement options",
+    ],
+    process: [
+      { step: "Planning", detail: "Clinical assessment and denture design are finalized." },
+      { step: "Fabrication", detail: "Impressions and try-ins are completed for fit and esthetics." },
+      { step: "Delivery", detail: "Final denture is inserted with adaptation guidance." },
+    ],
+    faqs: [
+      {
+        question: "How long does it take to get dentures?",
+        answer: "It typically requires a few staged visits for accurate fit and comfort.",
+      },
+      {
+        question: "Will dentures feel loose initially?",
+        answer: "An adaptation period is normal; adjustments improve comfort and stability.",
+      },
+      {
+        question: "How should dentures be cleaned?",
+        answer: "Daily cleaning and proper storage are essential for hygiene and longevity.",
+      },
+    ],
+  },
+  {
+    slug: "gums-treatment",
+    title: "Gums Treatment",
+    shortDescription: "Comprehensive periodontal care to control inflammation and protect support tissues.",
+    heroImage: gumsTreatmentImage,
+    intro:
+      "Gums treatment addresses bleeding, swelling, and periodontal infection through targeted therapy and maintenance protocols aimed at long-term stability.",
+    duration: "45-75 minutes",
+    visitPlan: "3-6 month maintenance",
+    comfortLevel: "Comfort-managed",
+    recovery: "Mild temporary tenderness",
+    treatments: [
+      "Periodontal assessment and gum mapping",
+      "Deep cleaning and anti-infective care",
+      "Maintenance planning for disease control",
+    ],
+    idealFor: [
+      "Bleeding gums and persistent inflammation",
+      "Periodontal pocketing and gum recession risk",
+      "Patients requiring structured gum maintenance",
+    ],
+    process: [
+      { step: "Assessment", detail: "Pocket depth and inflammation indices are recorded." },
+      { step: "Therapy", detail: "Targeted gum treatment reduces bacterial load and swelling." },
+      { step: "Maintenance", detail: "Follow-up intervals are set to prevent recurrence." },
+    ],
+    faqs: [
+      {
+        question: "Can gum disease be controlled?",
+        answer: "Yes, with timely treatment and maintenance, progression can be controlled effectively.",
+      },
+      {
+        question: "Do gums heal after treatment?",
+        answer: "Inflammation and bleeding often improve significantly with proper care.",
+      },
+      {
+        question: "Is maintenance necessary after treatment?",
+        answer: "Yes. Periodic maintenance is essential for long-term periodontal stability.",
       },
     ],
   },

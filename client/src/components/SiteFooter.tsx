@@ -8,13 +8,14 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/atlasdentalpk/", icon: Instagram },
   { label: "Facebook", href: "https://www.facebook.com/atlasdentalpk", icon: Facebook },
-  { label: "Twitter", href: "#", icon: Twitter },
+ 
 ];
 
 export function SiteFooter() {

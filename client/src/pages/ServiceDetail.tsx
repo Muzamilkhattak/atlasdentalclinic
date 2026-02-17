@@ -86,9 +86,7 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
             <Button asChild className="rounded-none bg-cyan-700 px-8 py-6 text-sm font-bold uppercase tracking-wide text-white hover:bg-cyan-800">
               <a href="/contact">Book Consultation</a>
             </Button>
-            <Button asChild variant="outline" className="rounded-none border-white/30 bg-white/10 px-8 py-6 text-sm font-bold uppercase tracking-wide text-white hover:bg-white/20">
-              <a href="/services">View All Services</a>
-            </Button>
+            
           </motion.div>
         </motion.div>
       </section>

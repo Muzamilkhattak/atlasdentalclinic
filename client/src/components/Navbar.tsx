@@ -21,7 +21,8 @@ export function Navbar() {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Team", href: "/#team" },
+    { label: "Blog", href: "/blog" },
+    { label: "Team", href: "/team" },
     { label: "Clinic", href: "/clinic-gallery" },
     { label: "Contact", href: "/contact" },
   ];

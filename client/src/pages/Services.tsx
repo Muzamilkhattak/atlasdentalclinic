@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   CheckCircle2,
-  Heart,
   Microscope,
   ShieldCheck,
   Sparkles,
@@ -14,79 +13,128 @@ import {
   Stethoscope,
   UserRoundCheck,
 } from "lucide-react";
-import clinicDental from "@/assets/clinic dental machine.jpeg";
 import generalDentistryImage from "@/assets/General Dentistry.png";
 import orthodonticsImage from "@/assets/Orthodontics.png";
-import oralSurgeryImage from "@/assets/Oral Surgery.png";
 import cosmeticDentistryImage from "@/assets/Cosmetic Dentistry.png";
-import pediatricDentistryImage from "@/assets/Pediatric Dentistry.png";
 import dentalImplantsImage from "@/assets/Dental Implants.png";
-import serviceRootCanalImage from "@/assets/clinic  reception and waiting area.jpeg";
+import periapicalXraysImage from "@/assets/Periapical Xrays.jpeg";
+import toothColouredFillingsImage from "@/assets/Tooth Coloured Fillings.jpeg";
+import compositeBondingImage from "@/assets/Composite Bonding.png";
+import toothExtractionsImage from "@/assets/tooth extraction.png";
+import wisdomToothSurgeryImage from "@/assets/Wisdom Tooth Surgery.jfif";
+import rootCanalTreatmentImage from "@/assets/Root Canal Treatment.jfif";
+import crownBridgeImage from "@/assets/Crown & Bridge.jfif";
+import veneersImage from "@/assets/Veneers.jfif";
+import clearAlignersImage from "@/assets/Clear Aligners.jfif";
+import removableDenturesImage from "@/assets/Removable Dentures.jpg";
+import gumsTreatmentImage from "@/assets/Gums Treatment.jfif";
 import servicesHeroImage from "@/assets/services hero.png";
 
 const specialties = [
   {
-    slug: "general-dentistry",
-    title: "General Dentistry",
-    description: "Routine exams, professional cleaning, and preventive plans for long-term oral health.",
+    slug: "periapical-xrays",
+    title: "Periapical Xrays",
+    description: "Targeted diagnostic X-rays for accurate evaluation of roots and surrounding tissues.",
+    icon: Microscope,
+    image: periapicalXraysImage,
+  },
+  {
+    slug: "tooth-coloured-fillings",
+    title: "Tooth Coloured Fillings",
+    description: "Natural-shade restorations designed to repair cavities conservatively.",
+    icon: CheckCircle2,
+    image: toothColouredFillingsImage,
+  },
+  {
+    slug: "composite-bonding",
+    title: "Composite Bonding",
+    description: "Aesthetic bonding to improve shape, close minor gaps, and restore chipped teeth.",
+    icon: Sparkles,
+    image: compositeBondingImage,
+  },
+  {
+    slug: "tooth-extractions",
+    title: "Tooth Extractions",
+    description: "Safe extractions with comfort-focused protocols and clear post-op guidance.",
+    icon: Scissors,
+    image: toothExtractionsImage,
+  },
+  {
+    slug: "wisdom-tooth-surgery",
+    title: "Wisdom Tooth Surgery",
+    description: "Specialist removal of impacted wisdom teeth with structured recovery planning.",
+    icon: Scissors,
+    image: wisdomToothSurgeryImage,
+  },
+  {
+    slug: "dental-implants",
+    title: "Dental Implants",
+    description: "Long-term implant solutions for single or multiple missing teeth.",
+    icon: CheckCircle2,
+    image: dentalImplantsImage,
+  },
+  {
+    slug: "root-canal-treatment",
+    title: "Root Canal Treatment",
+    description: "Tooth-preserving treatment for pulpal infection and deep sensitivity.",
+    icon: Microscope,
+    image: rootCanalTreatmentImage,
+  },
+  {
+    slug: "crown-bridge",
+    title: "Crown & Bridge",
+    description: "Custom prosthetic restorations for damaged and missing teeth.",
+    icon: Sparkles,
+    image: crownBridgeImage,
+  },
+  {
+    slug: "veneers",
+    title: "Veneers",
+    description: "Cosmetic smile correction using conservative veneer-based treatment.",
+    icon: Sparkles,
+    image: veneersImage,
+  },
+  {
+    slug: "scaling-polishing",
+    title: "Scaling & Polishing",
+    description: "Professional cleaning to maintain gum health and remove tartar deposits.",
     icon: Stethoscope,
     image: generalDentistryImage,
   },
   {
-    slug: "cosmetic-dentistry",
-    title: "Prosthodontics",
-    description: "Restorative and replacement-focused treatment to rebuild function, comfort, and smile confidence.",
+    slug: "teeth-whitening",
+    title: "Teeth Whitening",
+    description: "In-clinic whitening protocols for a brighter and cleaner smile tone.",
     icon: Sparkles,
     image: cosmeticDentistryImage,
   },
   {
-    slug: "orthodontics",
-    title: "Orthodontics",
-    description: "Braces and aligners designed for functional bite correction and confident smiles.",
+    slug: "braces",
+    title: "Braces",
+    description: "Fixed orthodontic mechanics for bite correction and alignment control.",
     icon: UserRoundCheck,
     image: orthodonticsImage,
   },
   {
-    slug: "oral-surgery",
-    title: "Oral Surgery",
-    description: "Precision extractions and surgical interventions with comfort-focused protocols.",
-    icon: Scissors,
-    image: oralSurgeryImage,
+    slug: "clear-aligners",
+    title: "Clear Aligners",
+    description: "Transparent removable aligners for discreet orthodontic treatment.",
+    icon: UserRoundCheck,
+    image: clearAlignersImage,
   },
   {
-    slug: "periodontics",
-    title: "Periodontology",
-    description: "Targeted gum-health diagnosis and treatment for long-term periodontal stability.",
+    slug: "removable-dentures",
+    title: "Removable Dentures",
+    description: "Removable prosthetic options designed for comfort and chewing function.",
+    icon: CheckCircle2,
+    image: removableDenturesImage,
+  },
+  {
+    slug: "gums-treatment",
+    title: "Gums Treatment",
+    description: "Comprehensive periodontal care for bleeding gums and tissue stability.",
     icon: ShieldCheck,
-    image: clinicDental,
-  },
-  {
-    slug: "operative-dentistry",
-    title: "Operative Dentistry",
-    description: "Conservative tooth-restoration procedures to repair decay and preserve natural structure.",
-    icon: CheckCircle2,
-    image: serviceRootCanalImage,
-  },
-  {
-    slug: "endodontics",
-    title: "Endodontics",
-    description: "Root canal therapy and advanced tooth-saving treatments using modern diagnostics.",
-    icon: Microscope,
-    image: serviceRootCanalImage,
-  },
-  {
-    slug: "pediatric-dentistry",
-    title: "Paediatric Dentistry",
-    description: "Gentle dental care for children with behavior-friendly and preventive-first methods.",
-    icon: Heart,
-    image: pediatricDentistryImage,
-  },
-  {
-    slug: "dental-implants",
-    title: "Dental Implantology",
-    description: "Long-term implant treatment planning and restoration for missing teeth.",
-    icon: CheckCircle2,
-    image: dentalImplantsImage,
+    image: gumsTreatmentImage,
   },
 ];
 
@@ -127,7 +175,7 @@ export default function Services() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/92" />
         </div>
         <motion.div
-          initial="hidden"
+          initial="visible"
           animate="visible"
           variants={sectionReveal}
           className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -145,16 +193,13 @@ export default function Services() {
             <Button asChild className="rounded-none bg-black px-8 py-6 text-sm font-bold uppercase tracking-wide text-white hover:bg-black/90">
               <a href="/contact">Book Appointment</a>
             </Button>
-            <Button asChild variant="outline" className="rounded-none border-slate-900 bg-white/70 px-8 py-6 text-sm font-bold uppercase tracking-wide">
-              <a href="/about">Meet Our Team</a>
-            </Button>
           </motion.div>
         </motion.div>
       </section>
 
       <section className="py-24">
         <motion.div
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={viewport}
           variants={sectionReveal}
@@ -203,7 +248,7 @@ export default function Services() {
 
       <section className="bg-[#efefef] py-20">
         <motion.div
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={viewport}
           variants={sectionReveal}

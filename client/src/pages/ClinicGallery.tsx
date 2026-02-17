@@ -13,7 +13,6 @@ import clinicOutsideImage from "@/assets/image of clinic form outside.webp";
 import clinicImageOne from "@/assets/image of clinic 1.webp";
 import clinicImageThree from "@/assets/image of clinic 3.webp";
 import clinicImageFive from "@/assets/image of clinic 5.webp";
-import clinicMachineAltImage from "@/assets/ourclinicidental machine.png";
 import aboutClinicOneImage from "@/assets/about us 1.jpg";
 import aboutClinicTwoImage from "@/assets/about us 2.webp";
 
@@ -59,11 +58,7 @@ const galleryItems: GalleryItem[] = [
     title: "Clinical Interior",
     description: "Bright and sterile treatment environment.",
   },
-  {
-    image: clinicMachineAltImage,
-    title: "Equipment Station",
-    description: "Dedicated area for precision procedures.",
-  },
+  
   {
     image: clinicImageOne,
     title: "Inside View I",

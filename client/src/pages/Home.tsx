@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { AnimatePresence, motion } from "framer-motion";
-import { Phone, Mail, MapPin, CheckCircle2, Stethoscope, Heart, ShieldCheck, ArrowRight, X, Users, Star, UserRoundCheck, Microscope, ClipboardCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, CheckCircle2, Stethoscope, Heart, ShieldCheck, ArrowRight, Users, Star, UserRoundCheck, Microscope, ClipboardCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import { contactFormSchema, type ContactFormValues } from "@/lib/contactFormSchema";
 import heroClinicImage from "@/assets/clinic reception.jpeg";
 import clinicDental from "@/assets/clinic dental machine.jpeg";
@@ -22,21 +22,31 @@ import serviceCosmeticImage from "@/assets/clinic dental machine.jpeg";
 import serviceRootCanalImage from "@/assets/clinic  reception and waiting area.jpeg";
 import generalDentistryImage from "@/assets/General Dentistry.png";
 import orthodonticsImage from "@/assets/Orthodontics.png";
-import oralSurgeryImage from "@/assets/Oral Surgery.png";
 import cosmeticDentistryImage from "@/assets/Cosmetic Dentistry.png";
-import pediatricDentistryImage from "@/assets/Pediatric Dentistry.png";
 import dentalImplantsImage from "@/assets/Dental Implants.png";
-import drIrfanAhmedImage from "@/assets/DR. irfan ahmed.jpg";
+import periapicalXraysImage from "@/assets/Periapical Xrays.jpeg";
+import toothColouredFillingsImage from "@/assets/Tooth Coloured Fillings.jpeg";
+import compositeBondingImage from "@/assets/Composite Bonding.png";
+import toothExtractionsImage from "@/assets/tooth extraction.png";
+import wisdomToothSurgeryImage from "@/assets/Wisdom Tooth Surgery.jfif";
+import rootCanalTreatmentImage from "@/assets/Root Canal Treatment.jfif";
+import crownBridgeImage from "@/assets/Crown & Bridge.jfif";
+import veneersImage from "@/assets/Veneers.jfif";
+import clearAlignersImage from "@/assets/Clear Aligners.jfif";
+import removableDenturesImage from "@/assets/Removable Dentures.jpg";
+import gumsTreatmentImage from "@/assets/Gums Treatment.jfif";
+import drIrfanAhmedImage from "@/assets/drirfanimage.png";
 import drMussabIrfanImage from "@/assets/Dr. Mussab Irfan.jpg";
-import drSanaKhanImage from "@/assets/Dr. Sana Khan.jpg";
+import drSanaKhanImage from "@/assets/drsanaprofile.jpeg";
 import drSaadSaudImage from "@/assets/drsaadsaud.jpg";
-import drMaazQureshiImage from "@/assets/drmaazqureshi.jpg";
+import drMaazQureshiImage from "@/assets/DrMaazQureshiprofile.jfif";
 import aboutus1 from "@/assets/about us 1.jpg";
 import aboutus2 from "@/assets/about us 2.webp";
 
 const HERO_TYPED_TEXT = "Dental Care";
 const ATLAS_PHONE_LINK = "tel:+923035889888";
 const ATLAS_PHONE_ALT_LINK = "tel:+92511234567";
+const ATLAS_PHONE_LANDLINE_LINK = "tel:+92516124810";
 const ATLAS_REVIEWS_LINK = "https://www.google.com/maps/search/?api=1&query=Atlas+Dental+Rawalpindi";
 const CONTACT_EMAIL = "atlasdentalpk@gmail.com";
 const FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/${CONTACT_EMAIL}`;
@@ -53,34 +63,111 @@ const TestimonialSlider = memo(function TestimonialSlider({ testimonials }: { te
     return null;
   }
 
-  const loopedTestimonials = [...testimonials, ...testimonials];
+  const getCardsPerPage = () => {
+    if (typeof window === "undefined") {
+      return 1;
+    }
+
+    if (window.innerWidth >= 1280) {
+      return 4;
+    }
+
+    if (window.innerWidth >= 768) {
+      return 2;
+    }
+
+    return 1;
+  };
+
+  const [cardsPerPage, setCardsPerPage] = useState(getCardsPerPage);
+  const [activePage, setActivePage] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerPage(getCardsPerPage());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const pageCount = Math.ceil(testimonials.length / cardsPerPage);
+  const canNavigate = pageCount > 1;
+  const startIndex = activePage * cardsPerPage;
+  const visibleTestimonials = testimonials.slice(startIndex, startIndex + cardsPerPage);
+
+  useEffect(() => {
+    if (activePage >= pageCount) {
+      setActivePage(0);
+    }
+  }, [activePage, pageCount]);
+
+  const goToPrevious = () => {
+    setActivePage((current) => (current - 1 + pageCount) % pageCount);
+  };
+
+  const goToNext = () => {
+    setActivePage((current) => (current + 1) % pageCount);
+  };
 
   return (
-    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-      <motion.div
-        className="flex w-max transform-gpu py-1"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          ease: "linear",
-          duration: testimonials.length * 9,
-          repeat: Infinity,
-          repeatType: "loop",
-          repeatDelay: 0,
-        }}
-        style={{ willChange: "transform" }}
-      >
-        {loopedTestimonials.map((testimonial, index) => (
-          <div key={`${testimonial.name}-${index}`} className="mr-6 w-[320px] shrink-0 sm:w-[360px] lg:w-[400px]">
-            <ReviewCard
-              name={testimonial.name}
-              initial={testimonial.name.charAt(0).toUpperCase()}
-              text={testimonial.text}
-              subtitle={testimonial.subtitle}
-              rating={testimonial.rating ?? 5}
+    <div className="mx-auto max-w-7xl">
+      <div className="relative px-10 sm:px-12">
+        {canNavigate && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous review set"
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-300 bg-white p-2 text-slate-700 shadow-sm transition hover:bg-slate-50"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next review set"
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-300 bg-white p-2 text-slate-700 shadow-sm transition hover:bg-slate-50"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+
+        <motion.div
+          key={`reviews-page-${activePage}-${cardsPerPage}`}
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+          {visibleTestimonials.map((testimonial, index) => (
+            <div key={`${testimonial.name}-${activePage}-${index}`} className="py-1">
+              <ReviewCard
+                name={testimonial.name}
+                initial={testimonial.name.charAt(0).toUpperCase()}
+                text={testimonial.text}
+                subtitle={testimonial.subtitle}
+                rating={testimonial.rating ?? 5}
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {canNavigate && (
+        <div className="mt-5 flex items-center justify-center gap-2">
+          {Array.from({ length: pageCount }).map((_, index) => (
+            <button
+              key={`page-dot-${index}`}
+              type="button"
+              onClick={() => setActivePage(index)}
+              aria-label={`Go to review page ${index + 1}`}
+              className={`h-2 rounded-full transition-all ${index === activePage ? "w-6 bg-slate-900" : "w-2 bg-slate-300"}`}
             />
-          </div>
-        ))}
-      </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   );
 });
@@ -250,56 +337,148 @@ export default function Home() {
       subtitle: "2 reviews | 6 years ago",
       text: "I visited Dr. Maaz for excruciating tooth pain. I couldn't sleep all night, and in the morning I needed a dentist urgently. A colleague suggested Dr. Maaz. He managed my pain quickly and completed my treatment in follow-up appointments very comfortably. If you're looking for the best dentist in Islamabad, visit Dr. Maaz's clinic.",
     },
+    {
+      name: "Shani Muhammad",
+      subtitle: "11 reviews | 4 years ago",
+      text: "My experience with Dr. Maaz was excellent. I took an appointment for my husband and the procedure was excellent. His work with his team is commendable. I recommend him as one of the best dentists in the city of Islamabad.",
+    },
+    {
+      name: "Aeman Nadeem",
+      subtitle: "5 reviews | 6 years ago",
+      text: "It's been a while since me and my family are visiting Dr Maaz for our dental issues. He is one gem of a person and very skilled in his work, MashaAllah. Keep up the good work doc!",
+    },
+    {
+      name: "Shakila Asghar",
+      subtitle: "Local Guide | 8 reviews | Edited 3 years ago",
+      text: "I booked an appointment with Dr. Maaz Qureshi after reading reviews on the website. I found my tooth extraction and scaling experience with him less painful and more satisfying hygienically as well as economically.",
+    },
+    {
+      name: "Mustafa Hassan",
+      subtitle: "6 reviews | 6 years ago",
+      text: "I got a root canal in my tooth from Karachi and moved to Islamabad after a while. The dentist in Karachi told me to get a cap on it afterwards. I got it done from Dr Maaz and I am very happy with the treatment. The capped tooth matches my natural teeth. The best dental services with reasonable rates.",
+    },
+    {
+      name: "Sana Tahir",
+      subtitle: "3 reviews | 6 years ago",
+      text: "Dealing with a stubborn patient like me who has a phobia of tools and syringes, Dr Maaz proved himself as one of the finest and friendliest dentists ever. He is very calm during the procedure and does not rush things. Thank you for tolerating me.",
+    },
+    {
+      name: "Fatima Waseem",
+      subtitle: "2 reviews | 5 years ago",
+      text: "Amazing experience throughout the treatment. Dr. Maaz took his time understanding my concerns, and proceeded to examine and deep clean my teeth. Clean and professional environment. Five star work.",
+    },
+    {
+      name: "Marriyam Nasir",
+      subtitle: "1 review | a year ago",
+      text: "Had a great experience. The dentists are very professional and the environment very comfortable. They listen to you calmly and explain every procedure very conveniently.",
+    },
+    {
+      name: "Rameen Aamir",
+      subtitle: "4 reviews | 2 years ago",
+      text: "Dr Maaz is excellent at his work and has a very professional clinical environment. Highly recommended dentist in Bahria, Rawalpindi.",
+    },
+    {
+      name: "Soha Kayani",
+      subtitle: "2 reviews | 6 years ago",
+      text: "I am a dentist myself and I will definitely vouch for Dr. Maaz Qureshi. He is one of the best dentists in Islamabad for crown, bridge and all kinds of artificial tooth replacements.",
+    },
+    {
+      name: "Aftar Hussain",
+      subtitle: "1 review | a year ago",
+      text: "I normally visit the dentist in England, but Dr Maaz Qureshi was phenomenal here at Atlas Dental. 10/10.",
+    },
   ], []);
 
   const serviceCards = [
     {
-      slug: "general-dentistry",
-      title: "General Dentistry",
-      desc: "Routine checkups, cleanings, and preventive care.",
-      img: generalDentistryImage,
+      slug: "periapical-xrays",
+      title: "Periapical Xrays",
+      desc: "Targeted diagnostic X-rays to assess specific tooth and root concerns.",
+      img: periapicalXraysImage,
     },
     {
-      slug: "orthodontics",
-      title: "Orthodontics",
-      desc: "Braces, aligners, and teeth straightening solutions.",
-      img: orthodonticsImage,
+      slug: "tooth-coloured-fillings",
+      title: "Tooth Coloured Fillings",
+      desc: "Natural-looking restorative fillings designed to preserve tooth structure.",
+      img: toothColouredFillingsImage,
     },
     {
-      slug: "oral-surgery",
-      title: "Oral Surgery",
-      desc: "Extractions, wisdom teeth removal, and surgical procedures.",
-      img: oralSurgeryImage,
+      slug: "composite-bonding",
+      title: "Composite Bonding",
+      desc: "Conservative aesthetic correction for chipped, spaced, or uneven teeth.",
+      img: compositeBondingImage,
     },
     {
-      slug: "cosmetic-dentistry",
-      title: "Cosmetic Dentistry",
-      desc: "Whitening, veneers, and smile makeovers.",
-      img: cosmeticDentistryImage,
+      slug: "tooth-extractions",
+      title: "Tooth Extractions",
+      desc: "Safe and comfort-focused removal of severely damaged or problematic teeth.",
+      img: toothExtractionsImage,
     },
     {
-      slug: "pediatric-dentistry",
-      title: "Pediatric Dentistry",
-      desc: "Specialized dental care for children and adolescents.",
-      img: pediatricDentistryImage,
-    },
-    {
-      slug: "periodontics",
-      title: "Periodontics",
-      desc: "Gum health treatments, disease prevention, and supportive therapy.",
-      img: clinicDental,
+      slug: "wisdom-tooth-surgery",
+      title: "Wisdom Tooth Surgery",
+      desc: "Surgical removal of impacted or painful wisdom teeth.",
+      img: wisdomToothSurgeryImage,
     },
     {
       slug: "dental-implants",
       title: "Dental Implants",
-      desc: "Permanent tooth replacement solution.",
+      desc: "Long-term replacement option for missing teeth with stable function.",
       img: dentalImplantsImage,
     },
     {
-      slug: "endodontics",
-      title: "Endodontics",
-      desc: "Root canal treatment and advanced tooth-preservation procedures.",
-      img: serviceRootCanalImage,
+      slug: "root-canal-treatment",
+      title: "Root Canal Treatment",
+      desc: "Tooth-saving endodontic treatment for deep infection or severe pain.",
+      img: rootCanalTreatmentImage,
+    },
+    {
+      slug: "crown-bridge",
+      title: "Crown & Bridge",
+      desc: "Custom restorations to rebuild damaged teeth and replace missing teeth.",
+      img: crownBridgeImage,
+    },
+    {
+      slug: "veneers",
+      title: "Veneers",
+      desc: "Aesthetic porcelain or composite coverings for smile enhancement.",
+      img: veneersImage,
+    },
+    {
+      slug: "scaling-polishing",
+      title: "Scaling & Polishing",
+      desc: "Professional cleaning to remove plaque, tartar, and surface stains.",
+      img: generalDentistryImage,
+    },
+    {
+      slug: "teeth-whitening",
+      title: "Teeth Whitening",
+      desc: "Professional whitening treatment for a brighter smile.",
+      img: cosmeticDentistryImage,
+    },
+    {
+      slug: "braces",
+      title: "Braces",
+      desc: "Fixed orthodontic appliances for correcting alignment and bite.",
+      img: orthodonticsImage,
+    },
+    {
+      slug: "clear-aligners",
+      title: "Clear Aligners",
+      desc: "Transparent removable aligners for discreet teeth straightening.",
+      img: clearAlignersImage,
+    },
+    {
+      slug: "removable-dentures",
+      title: "Removable Dentures",
+      desc: "Custom removable prostheses to restore function and confidence.",
+      img: removableDenturesImage,
+    },
+    {
+      slug: "gums-treatment",
+      title: "Gums Treatment",
+      desc: "Comprehensive gum therapy for bleeding, swelling, and periodontal care.",
+      img: gumsTreatmentImage,
     },
   ];
 
@@ -346,8 +525,6 @@ export default function Home() {
     },
   ];
 
-  const [hoveredDoctor, setHoveredDoctor] = useState<(typeof doctors)[number] | null>(null);
-  const [selectedDoctor, setSelectedDoctor] = useState<(typeof doctors)[number] | null>(null);
   const [heroTypedText, setHeroTypedText] = useState("");
   const [typingDirection, setTypingDirection] = useState<"forward" | "backward">("forward");
 
@@ -376,12 +553,6 @@ export default function Home() {
 
     return () => clearTimeout(timeoutId);
   }, [heroTypedText, typingDirection]);
-
-  const handleDoctorSelect = (doctor: (typeof doctors)[number]) => {
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
-      setSelectedDoctor(doctor);
-    }
-  };
 
   const sectionReveal = {
     hidden: { opacity: 0, y: 30 },
@@ -439,7 +610,7 @@ export default function Home() {
                 in Bahria Town
               </h1>
               <p className="text-base sm:text-xl text-slate-900 mb-8 sm:mb-10 leading-7 sm:leading-relaxed font-sans font-semibold max-w-[620px]">
-                Multidisciplinary dental excellence in Phase 7, Rawalpindi. Your smile deserves the best care.
+              Multidisciplinary dental  care centre in Bahria Town Phase 7, Rawalpindi. Your smile deserves the best care
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button asChild className="w-full sm:w-auto h-12 px-10 rounded-none text-base font-bold bg-black hover:bg-black/90 text-white transition-all font-sans uppercase tracking-wider">
@@ -460,7 +631,7 @@ export default function Home() {
       <div className="bg-black text-white py-3 text-center text-sm font-medium tracking-wide">
         <div className="flex items-center justify-center gap-2">
           <MapPin className="w-4 h-4" />
-          Bahria Town Phase 7, Rawalpindi
+          Trusted Dental Care in TwinCities
         </div>
       </div>
 
@@ -481,7 +652,7 @@ export default function Home() {
           </motion.div>
           
           <Button asChild variant="outline" className="rounded-none border-slate-900 px-8 uppercase text-xs font-bold tracking-widest">
-            <a href={ATLAS_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">See All Reviews</a>
+          
           </Button>
         </motion.div>
       </section>
@@ -545,27 +716,32 @@ export default function Home() {
               Founded by leading specialists, our clinic has served the TwinCities community for over a decade, treating thousands of patients with the highest standards of care and sterilization.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-slate-100">
-              <div className="space-y-2">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
-                  <Stethoscope />
+            <div className="pt-8 border-t border-slate-100">
+              <h3 className="inline-flex border border-black px-3 py-1 text-lg font-extrabold uppercase tracking-[0.2em] text-black">
+                Highlights
+              </h3>
+              <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-3">
+                <div className="space-y-2">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                    <Stethoscope />
+                  </div>
+                  <h4 className="font-bold">Multidisciplinary Team</h4>
+                  <p className="text-sm text-slate-500">All specialists under one roof</p>
                 </div>
-                <h4 className="font-bold">Multidisciplinary</h4>
-                <p className="text-sm text-slate-500">All specialists under one roof</p>
-              </div>
-              <div className="space-y-2">
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600 mb-4">
-                  <Heart />
+                <div className="space-y-2">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-green-600">
+                    <Heart />
+                  </div>
+                  <h4 className="font-bold">Patient Centric Approach</h4>
+                  <p className="text-sm text-slate-500">Your comfort is our priority</p>
                 </div>
-                <h4 className="font-bold">Patient Centric</h4>
-                <p className="text-sm text-slate-500">Your comfort is our priority</p>
-              </div>
-              <div className="space-y-2">
-                <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-4">
-                  <CheckCircle2 />
+                <div className="space-y-2">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
+                    <CheckCircle2 />
+                  </div>
+                  <h4 className="font-bold">Quality First</h4>
+                  <p className="text-sm text-slate-500">Premium materials and equipment</p>
                 </div>
-                <h4 className="font-bold">Quality First</h4>
-                <p className="text-sm text-slate-500">Premium materials & tools</p>
               </div>
             </div>
           </motion.div>
@@ -587,128 +763,47 @@ export default function Home() {
       </section>
 
       {/* Specialists */}
-      <section id="team" className="py-24 bg-slate-900 text-white">
+      <section id="team" className="py-24 bg-black text-white">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={scrollViewport}
-          variants={sectionReveal}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.01 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
-          <motion.div variants={itemReveal} className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.01 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl font-bold font-display mb-4">Our Specialists</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
               Meet our team of highly qualified and experienced dental professionals.
             </p>
-            <p className="mt-3 text-sm text-slate-500 lg:hidden">Tap any doctor to view full profile</p>
           </motion.div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 justify-items-center">
-            {doctors.map((doctor) => (
-              <motion.div variants={itemReveal} key={doctor.name}>
+            {doctors.map((doctor, index) => (
+              <motion.div
+                key={doctor.name}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.01 }}
+                transition={{ duration: 0.3, delay: index * 0.04, ease: "easeOut" }}
+              >
                 <DoctorCard
                   name={doctor.name}
                   imageUrl={doctor.imageUrl}
-                  onHoverStart={() => setHoveredDoctor(doctor)}
-                  onHoverEnd={() => setHoveredDoctor(null)}
-                  onSelect={() => handleDoctorSelect(doctor)}
+                  specialty={doctor.specialty}
+                  qualifications={doctor.qualifications}
+                  certification={doctor.certification}
+                  role={doctor.role}
                 />
               </motion.div>
             ))}
           </div>
-          <AnimatePresence>
-            {hoveredDoctor && (
-              <motion.div
-                className="pointer-events-none fixed inset-0 z-50 hidden items-center justify-center px-4 lg:flex"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 18, scale: 0.92 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 18, scale: 0.92 }}
-                  transition={{ duration: 0.28, ease: "easeOut" }}
-                  className="w-full max-w-lg overflow-hidden rounded-3xl border border-white/20 bg-slate-900 shadow-xl shadow-black/30"
-                >
-                  <div className="relative h-[460px]">
-                    <img
-                      src={hoveredDoctor.imageUrl}
-                      alt={hoveredDoctor.name}
-                      className="h-full w-full bg-slate-950 object-contain object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-8 text-white">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/75">Our Specialist</p>
-                      <h3 className="text-3xl font-bold font-display leading-tight">{hoveredDoctor.name}</h3>
-                      <p className="mt-2 text-base font-semibold text-white/95">{hoveredDoctor.qualifications}</p>
-                      <p className="mt-2 text-sm text-white/85">{hoveredDoctor.specialty}</p>
-                      {hoveredDoctor.certification ? (
-                        <p className="mt-1 text-sm text-white/85">{hoveredDoctor.certification}</p>
-                      ) : null}
-                      {hoveredDoctor.role ? (
-                        <p className="mt-3 inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-                          {hoveredDoctor.role}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <AnimatePresence>
-            {selectedDoctor && (
-              <motion.div
-                className="fixed inset-0 z-50 flex items-end bg-black/70 backdrop-blur-sm lg:hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setSelectedDoctor(null)}
-              >
-                <motion.div
-                  className="relative max-h-[88vh] w-full overflow-y-auto rounded-t-3xl bg-slate-950"
-                  initial={{ y: 60, opacity: 0.9 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 60, opacity: 0.9 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  onClick={(event) => event.stopPropagation()}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setSelectedDoctor(null)}
-                    className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white"
-                    aria-label="Close doctor profile"
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                  <div className="relative h-[400px]">
-                    <img
-                      src={selectedDoctor.imageUrl}
-                      alt={selectedDoctor.name}
-                      className="h-full w-full bg-slate-950 object-contain object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/75">Our Specialist</p>
-                      <h3 className="text-2xl font-bold font-display leading-tight">{selectedDoctor.name}</h3>
-                      <p className="mt-2 text-sm font-semibold text-white/95">{selectedDoctor.qualifications}</p>
-                      <p className="mt-2 text-sm text-white/85">{selectedDoctor.specialty}</p>
-                      {selectedDoctor.certification ? (
-                        <p className="mt-1 text-sm text-white/85">{selectedDoctor.certification}</p>
-                      ) : null}
-                      {selectedDoctor.role ? (
-                        <p className="mt-3 inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-                          {selectedDoctor.role}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.div>
       </section>
 
@@ -716,7 +811,7 @@ export default function Home() {
       {/* Services Cards */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title="Our Services" subtitle="World-class dental treatments tailored to your needs" />
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviceCards.map((service, i) => (
             <motion.div
@@ -807,7 +902,7 @@ export default function Home() {
                       <a href={ATLAS_PHONE_LINK} className="hover:underline">+92 303 5889888</a>
                     </p>
                     <p className="text-slate-600">
-                      <a href={ATLAS_PHONE_ALT_LINK} className="hover:underline">+92 51 1234567</a>
+                      <a href={ATLAS_PHONE_LANDLINE_LINK} className="hover:underline">051 6124810</a>
                     </p>
                   </div>
                 </div>

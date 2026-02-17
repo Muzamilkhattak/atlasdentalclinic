@@ -144,8 +144,8 @@ export default function About() {
           </motion.div>
 
           <motion.div variants={itemReveal} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-10 lg:self-start">
-            <img src={aboutClinicImage} alt="Clinic interior" className="h-72 w-full rounded-2xl object-cover object-center sm:h-80" />
-            <img src={aboutTeamImage} alt="Dental team area" className="h-72 w-full rounded-2xl object-cover object-center sm:h-80" />
+            <img src={aboutClinicImage} alt="Clinic interior" loading="lazy" decoding="async" className="h-72 w-full rounded-2xl object-cover object-center sm:h-80" />
+            <img src={aboutTeamImage} alt="Dental team area" loading="lazy" decoding="async" className="h-72 w-full rounded-2xl object-cover object-center sm:h-80" />
           </motion.div>
         </motion.div>
       </section>
@@ -176,6 +176,8 @@ export default function About() {
                 <img
                   src={drMaazQureshiImage}
                   alt="Dr. Maaz Rasul Qureshi"
+                  loading="lazy"
+                  decoding="async"
                   className="h-32 w-32 rounded-full border border-black/10 bg-white object-contain object-center p-1 shadow-[0_6px_16px_rgba(15,23,42,0.12)] sm:h-40 sm:w-40"
                 />
               </div>

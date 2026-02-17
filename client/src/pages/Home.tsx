@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Phone, Mail, MapPin, CheckCircle2, Stethoscope, Heart, ShieldCheck, ArrowRight, Users, Star, UserRoundCheck, Microscope, ClipboardCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import { contactFormSchema, type ContactFormValues } from "@/lib/contactFormSchema";
 import heroClinicImage from "@/assets/clinic reception.jpeg";
@@ -175,6 +175,7 @@ const TestimonialSlider = memo(function TestimonialSlider({ testimonials }: { te
 export default function Home() {
   const { toast } = useToast();
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -555,24 +556,24 @@ export default function Home() {
   }, [heroTypedText, typingDirection]);
 
   const sectionReveal = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 18 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: prefersReducedMotion ? 0 : 0.45,
         ease: "easeOut",
-        staggerChildren: 0.12,
+        staggerChildren: prefersReducedMotion ? 0 : 0.06,
       },
     },
   };
 
   const itemReveal = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 14 },
+    visible: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.28, ease: "easeOut" } },
   };
 
-  const scrollViewport = { once: true, amount: 0.2 };
+  const scrollViewport = { once: true, amount: 0.08 };
 
   return (
     <div className="min-h-screen bg-white">
@@ -585,6 +586,9 @@ export default function Home() {
           <img 
             src={clinicDental}
             alt="Modern Dental Clinic"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center scale-[1.02] saturate-110 contrast-105"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/18 to-white/8 sm:bg-gradient-to-r sm:from-white/18 sm:via-white/14 sm:to-white/10 backdrop-blur-[0.6px]"></div>
@@ -672,7 +676,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={scrollViewport}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.32, delay: prefersReducedMotion ? 0 : i * 0.04 }}
               whileHover={{ y: -5 }}
               className={`rounded-lg bg-[#e8e8ea] px-6 py-10 text-center ${
                 service.title === "Dental Implantology"
@@ -699,7 +703,7 @@ export default function Home() {
       
 
       {/* About Section */}
-      <section id="about" className="py-24 px-4 max-w-7xl mx-auto">
+ <section id="about" className="py-24 px-4 max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -750,12 +754,16 @@ export default function Home() {
             <img 
               src={aboutus1} 
               alt="Doctor working"
+              loading="lazy"
+              decoding="async"
               className="rounded-2xl w-full h-64 object-cover mt-12"
             />
             {/* dental consultation friendly */}
             <img 
               src={aboutus2} 
               alt="Team Meeting"
+              loading="lazy"
+              decoding="async"
               className="rounded-2xl w-full h-64 object-cover"
             />
           </motion.div>
@@ -768,14 +776,14 @@ export default function Home() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.01 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.24, ease: "easeOut" }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.01 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.22, ease: "easeOut" }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold font-display mb-4">Our Specialists</h2>
@@ -791,7 +799,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.01 }}
-                transition={{ duration: 0.3, delay: index * 0.04, ease: "easeOut" }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.24, delay: prefersReducedMotion ? 0 : index * 0.03, ease: "easeOut" }}
               >
                 <DoctorCard
                   name={doctor.name}
@@ -819,12 +827,12 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={scrollViewport}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.32, delay: prefersReducedMotion ? 0 : i * 0.04 }}
               whileHover={{ y: -5 }}
               className="group rounded-2xl overflow-hidden shadow-lg border border-slate-100"
             >
               <div className="h-48 overflow-hidden">
-                <img src={service.img} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={service.img} alt={service.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{service.title}</h3>
@@ -856,19 +864,19 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[500px]">
           {/* clinic reception area modern */}
           <motion.div variants={itemReveal} className="col-span-2 row-span-2 rounded-2xl overflow-hidden">
-            <img src={serviceRootCanalImage} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Reception" />
+            <img src={serviceRootCanalImage} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Reception" />
           </motion.div>
           {/* dental chair modern equipment */}
           <motion.div variants={itemReveal} className="col-span-1 row-span-1 rounded-2xl overflow-hidden">
-            <img src={serviceCosmeticImage} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Dental Chair" />
+            <img src={serviceCosmeticImage} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Dental Chair" />
           </motion.div>
           {/* waiting area comfortable */}
           <motion.div variants={itemReveal} className="col-span-1 row-span-2 rounded-2xl overflow-hidden">
-            <img src={aboutClinicImage} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Waiting Area" />
+            <img src={aboutClinicImage} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Waiting Area" />
           </motion.div>
           {/* sterilization room clean */}
           <motion.div variants={itemReveal} className="col-span-1 row-span-1 rounded-2xl overflow-hidden">
-            <img src={heroClinicImage} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Sterilization" />
+            <img src={heroClinicImage} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Sterilization" />
           </motion.div>
         </div>
         <motion.div variants={itemReveal} className="mt-10 flex justify-center">

@@ -171,7 +171,7 @@ export default function Services() {
 
       <section className="relative overflow-hidden pt-32 pb-24">
         <div className="absolute inset-0 z-0">
-          <img src={servicesHeroImage} alt="Atlas Dental services" className="h-full w-full object-cover object-center" />
+          <img src={servicesHeroImage} alt="Atlas Dental services" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/92" />
         </div>
         <motion.div
@@ -224,6 +224,8 @@ export default function Services() {
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

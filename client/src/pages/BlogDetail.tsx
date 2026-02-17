@@ -59,7 +59,7 @@ export default function BlogDetail({ slug }: BlogDetailProps) {
 
       <section className="relative overflow-hidden bg-slate-950 pb-24 pt-32 text-white">
         <div className="absolute inset-0 z-0">
-          <img src={post.coverImage} alt={post.title} className="h-full w-full object-cover object-center" />
+          <img src={post.coverImage} alt={post.title} loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/80 to-cyan-900/55" />
         </div>
 

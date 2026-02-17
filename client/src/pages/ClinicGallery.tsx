@@ -132,6 +132,9 @@ export default function ClinicGallery() {
           <img
             src={clinicOutsideImage}
             alt="Atlas Dental clinic exterior"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover object-center opacity-25"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,0.12),transparent_46%),radial-gradient(circle_at_82%_28%,rgba(56,189,248,0.18),transparent_42%),linear-gradient(120deg,#020617_0%,#000000_50%,#111827_100%)]" />
@@ -187,6 +190,8 @@ export default function ClinicGallery() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
@@ -221,7 +226,7 @@ export default function ClinicGallery() {
               >
                 <X className="h-5 w-5" />
               </button>
-              <img src={activeImage.image} alt={activeImage.title} className="max-h-[80vh] w-full bg-black object-contain p-4 sm:p-6" />
+              <img src={activeImage.image} alt={activeImage.title} loading="eager" decoding="async" className="max-h-[80vh] w-full bg-black object-contain p-4 sm:p-6" />
             </motion.div>
           </motion.div>
         )}

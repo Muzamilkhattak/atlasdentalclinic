@@ -126,7 +126,7 @@ export default function Contact() {
 
       <section className="relative overflow-hidden bg-slate-900 pt-32 pb-24 text-white">
         <div className="absolute inset-0 z-0">
-          <img src={clinicReception} alt="Atlas Dental contact" className="h-full w-full object-cover object-center" />
+          <img src={clinicReception} alt="Atlas Dental contact" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-slate-900/70 to-cyan-900/70" />
         </div>
         <motion.div

@@ -63,7 +63,7 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
 
       <section className="relative overflow-hidden bg-slate-950 pb-24 pt-32 text-white">
         <div className="absolute inset-0 z-0">
-          <img src={service.heroImage} alt={service.title} className="h-full w-full object-cover object-center" />
+          <img src={service.heroImage} alt={service.title} loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-900/75 to-cyan-900/60" />
         </div>
 
@@ -244,7 +244,7 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
                 className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
               >
                 <div className="h-44 overflow-hidden">
-                  <img src={item.heroImage} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+                  <img src={item.heroImage} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold">{item.title}</h3>
